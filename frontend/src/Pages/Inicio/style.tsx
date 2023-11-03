@@ -116,9 +116,10 @@ export const Ash = styled.img `
 `;
 
 export const Charizard = styled.img `
-    width: 20vw;
+    width: 15vw;
 
     position: absolute;
+    right: 0;
     z-index: 2;
     transform: rotate(-30deg);
 
@@ -126,20 +127,19 @@ export const Charizard = styled.img `
 `;
 
 export const Magma = styled.img `
-    width: 60vw;
+    width: 50vw;
     position: absolute;
+    left: 5vw;
     bottom: -1vh;
     z-index: 0;
+    filter: blur(1px);
 `;
 
 export const OutroMagma = styled.img `
-    width: 80vw;
+    width: 70vw;
     position: absolute;
-    bottom: 5vw;
+    bottom: 0;
     left: 10vw;
     z-index: -1;
-`;
-
-export const Fogo = styled.img `
-    
+    filter: blur(1px);
 `;

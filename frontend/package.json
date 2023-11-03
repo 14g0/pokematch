@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "pokematch",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

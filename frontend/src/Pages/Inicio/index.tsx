@@ -1,11 +1,10 @@
-import { Ash, BlurDiv, Charizard, Comecar, FlorestaBg, Fogo, FogoDiv, InicioDiv, 
+import { Ash, BlurDiv, Charizard, Comecar, FlorestaBg, FogoDiv, InicioDiv, 
     Magma, NomeDiv, NomeInput, NomeLabel, OutroMagma } from "./style";
 
 import bgFloresta from '../../Assets/Inicio/BgFloresta.svg';
 import pkmLogo from '../../Assets/Inicio/pkmLogo.svg';
 import ash from '../../Assets/Inicio/Ash.svg';
 import magma from '../../Assets/Inicio/magma.svg'
-import fogo from '../../Assets/Inicio/giphy.gif';
 import charizard from '../../Assets/Inicio/charizard.svg';
 
 export default function Inicio() {
