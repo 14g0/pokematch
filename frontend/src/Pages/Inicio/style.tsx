@@ -3,14 +3,20 @@ import { global } from "../../global";
 
 export const InicioDiv = styled.div `
     display: flex;
-    width: 100vw;
+    width: fill;
     height: 100vh;
+
+    overflow: hidden;
 
     align-items: center;
 `;
 
 export const FlorestaBg = styled.img `
+    display: display;
     width: 100%;
+    height: 100vh;
+    object-fit: cover;
+
     position: absolute;
     z-index: -1;
 
