@@ -15,30 +15,33 @@ export const PokedexDiv = styled.div `
 
 export const PokeNav = styled.nav `
     display: grid;
-    grid-template-columns: 0.2fr 0.4fr auto;
+    grid-template-columns: 0.5fr auto;
     width: 100%;
-    height: 50px;
+    height: 50%;
 
-    padding: 1% 2%;
+    padding: 1% 2% 4% 2%;
 
     align-items: center;
 
     background-color: ${global.cores.amarelo};
 `;
 
-export const NavText = styled.p `
+export const SelectionDiv = styled.form `
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr;
 `;
 
-export const NavOptionsDiv = styled.div `
+export const SearchSelection = styled.div `
     display: flex;
     width: 100%;
+    height: 100%;
 
     justify-content: space-between;
 `;
 
-export const NavButton = styled.button `
-    width: 10%;
+export const SearchOption = styled.div `
+    display: flex;
+    flex-direction: column;
 
-    text-align: center;
-    font-family: ${global.fonts.quantico};
+    justify-content: space-evenly;
 `;
