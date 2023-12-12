@@ -4,13 +4,14 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Inicio from './Pages/Inicio';
 import Pokedex from './Pages/Pokedex';
+import Router from './Routes/router';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <Pokedex/>
+    <Router/>
   </React.StrictMode>
 );
 

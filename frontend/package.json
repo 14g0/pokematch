@@ -2,6 +2,7 @@
   "name": "pokematch",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
   "dependencies": {
     "@fontsource/lato": "^5.0.17",
     "@fontsource/quantico": "^5.0.17",

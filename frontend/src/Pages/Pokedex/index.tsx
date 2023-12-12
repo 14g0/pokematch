@@ -1,50 +1,70 @@
 import { useForm } from 'react-hook-form';
-import SelectionInput from "../../Components/SelectionButton";
-import { PokeNav, PokedexDiv, SearchSelection, SelectionDiv } from "./style";
+import { CardsDiv, PokeNav, PokedexDiv, SelectionDiv, SelectionOptions, SelectionTitle } from "./style";
+import Tipos from '../../Components/Tipos';
+import PokeCard from '../../Components/PokeCard';
 
-type Tipos = {
-    agua: boolean;
-    fogo: boolean;
-    planta: boolean;
-    pedra: boolean;
-    psiq: boolean;
-    dragao: boolean;
-    fada: boolean;
-    eletrico: boolean;
-    fantasma: boolean;
+type Consulta = {
+    normal: boolean; fogo: boolean;
+    agua: boolean; grama: boolean;
+    voador: boolean; lutador: boolean;
+    veneno: boolean; eletrico: boolean;
+    terra: boolean; pedra: boolean;
+    psiquico: boolean; gelo: boolean;
+    inseto: boolean; fantasma: boolean;
+    ferro: boolean; dragao: boolean;
+    sombrio: boolean; fada: boolean;
+
+    consulta: number;
 }
 
 export default function Pokedex() {
 
-    const { register, handleSubmit, setValue, getValues } = useForm<Tipos>({
+    useForm<Consulta>({
         defaultValues:{
-            agua: false,
-            fogo: false,
-            planta: false,
-            pedra: false,
-            psiq: false,
-            dragao: false,
-            fada: false,
-            eletrico: false,
-            fantasma: false,
+            normal: false, fogo: false,
+            agua: false, grama: false,
+            voador: false, lutador: false,
+            veneno: false, eletrico: false,
+            terra: false, pedra: false,
+            psiquico: false, gelo: false,
+            inseto: false, fantasma: false,
+            ferro: false, dragao: false,
+            sombrio: false, fada: false
     }});
 
     return (
         <PokedexDiv>
             <PokeNav>
                 <SelectionDiv>
-
-                    <SearchSelection>
-                        <div>
-                            <SelectionInput id="fogo" texto="Fogo"
-                            {...register('fogo', { required: true })}/>
-                        </div>
-                        <div>
-                            <SelectionInput id="agua" texto="Agua"/>
-                        </div>
-                    </SearchSelection>
+                    <SelectionTitle>Tipos</SelectionTitle>
+                    <SelectionOptions>
+                        <Tipos/>
+                    </SelectionOptions>
                 </SelectionDiv>
+
+                
             </PokeNav>
+
+            <CardsDiv>
+                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
+                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
+                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
+                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
+                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
+                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
+                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
+                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
+                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
+                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
+                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
+                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
+                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
+                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
+                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
+                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
+                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
+                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
+            </CardsDiv>
         </PokedexDiv>
     );
 }
