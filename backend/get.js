@@ -5,10 +5,10 @@ const db = new sqlite.Database(
 );
 
 db.serialize(() => {
-    db.each('select tipo.nome from tipo', (err, row) => {
+    db.each(`select pokemon.nome, pokemon.pokedex from pokemon where pokemon.nome like 'b%'`, (err, row) => {
         if(err) console.log(err);
 
-        console.log(row.nome);
+        console.log(row);
     });
 });
 

@@ -22,38 +22,37 @@ import voador from '../../Assets/Tipos/tipoVoador.png';
 type Pokemon = {
     tipos: Array<string>;
     nome: string;
-    geracao: string;
-    movimento: Array<string>;
+    foto: string;
 };
 
 export default function PokeCard(
-    {tipos, nome, geracao, movimento}: Pokemon
+    {tipos, nome, foto}: Pokemon
 ) {
     return (
         <PokeCardDiv>
-            <CardImg src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png"/>
+            <CardImg src={foto}/>
             <PokeName>{nome}</PokeName>
             <TiposDiv>
                 {tipos.map((tipo) => {
                     switch(tipo) {
-                        case 'agua': return <TipoIcon src={agua}/>
-                        case 'pedra': return <TipoIcon src={pedra}/>
-                        case 'fantasma': return <TipoIcon src={fantasma}/>
-                        case 'eletrico': return <TipoIcon src={eletrico}/>
-                        case 'terra': return <TipoIcon src={terra}/>
-                        case 'ferro': return <TipoIcon src={ferro}/>
-                        case 'psiquico': return <TipoIcon src={psiquico}/>
-                        case 'sombrio': return <TipoIcon src={sombrio}/>
-                        case 'dragao': return <TipoIcon src={dragao}/>
-                        case 'lutador': return <TipoIcon src={lutador}/>
-                        case 'veneno': return <TipoIcon src={veneno}/>
-                        case 'fogo': return <TipoIcon src={fogo}/>
-                        case 'voador': return <TipoIcon src={voador}/>
-                        case 'gelo': return <TipoIcon src={gelo}/>
-                        case 'inseto': return <TipoIcon src={inseto}/>
-                        case 'fada': return <TipoIcon src={fada}/>
-                        case 'grama': return <TipoIcon src={grama}/>
                         case 'normal': return <TipoIcon src={normal}/>
+                        case 'fighting': return <TipoIcon src={lutador}/>
+                        case 'flying': return <TipoIcon src={voador}/>
+                        case 'poison': return <TipoIcon src={veneno}/>
+                        case 'ground': return <TipoIcon src={terra}/>
+                        case 'rock': return <TipoIcon src={pedra}/>
+                        case 'bug': return <TipoIcon src={inseto}/>
+                        case 'ghost': return <TipoIcon src={fantasma}/>
+                        case 'steel': return <TipoIcon src={ferro}/>
+                        case 'fire': return <TipoIcon src={fogo}/>
+                        case 'water': return <TipoIcon src={agua}/>
+                        case 'grass': return <TipoIcon src={grama}/>
+                        case 'electric': return <TipoIcon src={eletrico}/>
+                        case 'psychic': return <TipoIcon src={psiquico}/>
+                        case 'ice': return <TipoIcon src={gelo}/>
+                        case 'dragon': return <TipoIcon src={dragao}/>
+                        case 'dark': return <TipoIcon src={sombrio}/>
+                        case 'fairy': return <TipoIcon src={fada}/>
                         default: return <TipoIcon/>
                     }
                 })}

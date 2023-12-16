@@ -3,7 +3,7 @@ import { CardsDiv, PokeNav, PokedexDiv, SelectionDiv, SelectionOptions, Selectio
 import Tipos from '../../Components/Tipos';
 import PokeCard from '../../Components/PokeCard';
 
-type Consulta = {
+type tiposForm = {
     normal: boolean; fogo: boolean;
     agua: boolean; grama: boolean;
     voador: boolean; lutador: boolean;
@@ -13,23 +13,33 @@ type Consulta = {
     inseto: boolean; fantasma: boolean;
     ferro: boolean; dragao: boolean;
     sombrio: boolean; fada: boolean;
+}
 
+type iago = {
+    abacate: string;
+}
+
+type Consulta = {
     consulta: number;
+    
+    formulario: tiposForm | iago
 }
 
 export default function Pokedex() {
 
     useForm<Consulta>({
         defaultValues:{
-            normal: false, fogo: false,
-            agua: false, grama: false,
-            voador: false, lutador: false,
-            veneno: false, eletrico: false,
-            terra: false, pedra: false,
-            psiquico: false, gelo: false,
-            inseto: false, fantasma: false,
-            ferro: false, dragao: false,
-            sombrio: false, fada: false
+            formulario: {
+                normal: false, fogo: false,
+                agua: false, grama: false,
+                voador: false, lutador: false,
+                veneno: false, eletrico: false,
+                terra: false, pedra: false,
+                psiquico: false, gelo: false,
+                inseto: false, fantasma: false,
+                ferro: false, dragao: false,
+                sombrio: false, fada: false,
+            }
     }});
 
     return (
@@ -46,24 +56,24 @@ export default function Pokedex() {
             </PokeNav>
 
             <CardsDiv>
-                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
-                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
-                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
-                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
-                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
-                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
-                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
-                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
-                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
-                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
-                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
-                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
-                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
-                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
-                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
-                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
-                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
-                <PokeCard nome='Blastoise' tipos={['agua']} geracao='generation-i' movimento={['bomba']}/>
+                <PokeCard nome='Blastoise' tipos={['agua', 'grass']} foto=''/>
+                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
+                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
+                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
+                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
+                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
+                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
+                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
+                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
+                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
+                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
+                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
+                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
+                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
+                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
+                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
+                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
+                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
             </CardsDiv>
         </PokedexDiv>
     );
