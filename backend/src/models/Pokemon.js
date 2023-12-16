@@ -11,8 +11,8 @@ const Pokemon = sequelize.define('Pokemon', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    geracao: {
-        type: DataTypes.STRING,
+    foto: {
+        type: DataTypes.BLOB,
         allowNull: false
     }
 });
@@ -20,11 +20,21 @@ const Pokemon = sequelize.define('Pokemon', {
 Pokemon.associate = function (models){
     Pokemon.belongsToMany(models.Tipo, {
         through: 'Possui',
-        as: 'pokemon',
+        as: 'pokemonTipo',
         foreignKey: 'PokemonTipoID'
+    });
+
+    Pokemon.belongsToMany(models.Skill, {
+        through: 'Aprende',
+        as: 'pokemonSkill',
+        foreignKey: 'PokemonSkillID'
+    });
+
+    Pokemon.belongsToMany(models.Caracteristicas, {
+        through: 'Tem',
+        as: 'pokemonCarac',
+        foreignKey: 'PokemonCaracID'
     });
 };
 
-
-// exportando Model
 module.exports = Pokemon;

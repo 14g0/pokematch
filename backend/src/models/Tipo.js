@@ -5,7 +5,6 @@ const Tipo = sequelize.define('Tipo', {
     id: {
         primaryKey: true,
         type: DataTypes.INTEGER,
-        allowNull: false
     },
     nome: {
         type: DataTypes.STRING,
@@ -21,6 +20,4 @@ Tipo.associate = function (models){
     });
 };
 
-
-// exportando Model
 module.exports = Tipo;

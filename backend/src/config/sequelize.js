@@ -21,6 +21,8 @@ module.exports = sequelize;
 
 require('../models/Pokemon');
 require('../models/Tipo');
+require('../models/Caracteristicas');
+require('../models/Skill');
 
 for (mod in sequelize.models) {
   if (sequelize.models[mod].associate instanceof Function) {
