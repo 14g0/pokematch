@@ -14,7 +14,7 @@ const Caracteristicas = sequelize.define('Caracteristicas', {
         type: DataTypes.FLOAT,
         allowNull: false
     }
-});
+}, { freezeTableName: true });
 
 Caracteristicas.associate = function (models){
     Caracteristicas.belongsToMany(models.Pokemon, {

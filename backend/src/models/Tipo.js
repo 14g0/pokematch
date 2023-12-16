@@ -10,7 +10,7 @@ const Tipo = sequelize.define('Tipo', {
         type: DataTypes.STRING,
         allowNull: false
     }
-});
+}, { freezeTableName: true });
 
 Tipo.associate = function (models){
     Tipo.belongsToMany(models.Pokemon, {

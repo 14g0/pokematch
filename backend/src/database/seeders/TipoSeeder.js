@@ -11,8 +11,6 @@ const seedTipo = async() => {
             nome: tipo.name
         })
     });
-
-    console.log()
     
     try {
         await Tipo.sync({ force: true });

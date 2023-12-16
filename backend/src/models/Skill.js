@@ -10,7 +10,7 @@ const Skill = sequelize.define('Skill', {
         type: DataTypes.STRING,
         allowNull: false
     }
-});
+}, { freezeTableName: true });
 
 Skill.associate = function (models){
     Skill.belongsToMany(models.Pokemon, {

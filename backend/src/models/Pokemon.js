@@ -12,10 +12,10 @@ const Pokemon = sequelize.define('Pokemon', {
         allowNull: false
     },
     foto: {
-        type: DataTypes.BLOB,
+        type: DataTypes.STRING,
         allowNull: false
     }
-});
+}, { freezeTableName: true });
 
 Pokemon.associate = function (models){
     Pokemon.belongsToMany(models.Tipo, {
