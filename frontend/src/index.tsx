@@ -2,15 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Inicio from './Pages/Inicio';
+import Pokedex from './Pages/Pokedex';
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+    document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <Inicio/>
-  </React.StrictMode>
+    <React.StrictMode>
+        <Pokedex/>
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
