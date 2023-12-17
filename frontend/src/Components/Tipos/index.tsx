@@ -1,65 +1,96 @@
-import { useForm } from "react-hook-form";
-import SelectionInput from "../SelectionButton";
+import { SelecButtonDiv, SelecInput, SelecLabel, TiposDiv } from "./style";
 
-export default function Tipos() {
+type InputAtt = {
+    id: string;
+    texto: string;
+    funcao: Function;
+};
 
-    const { setValue } = useForm();
+type TiposFunctions = {
+    getValor: Function;
+    setValor: Function;
+}
+
+export default function Tipos({getValor, setValor}: TiposFunctions) {
+
+    const gerenciarTipos = (valor: string) => {
+        const selecionados: Array<string> = getValor('tipos');
+        
+        if(selecionados.includes(valor)) {
+            const novosTipos = selecionados.filter((tipo: string) => tipo !== valor);
+            setValor('tipos', novosTipos);
+        }
+        else {
+            const novosTipos = selecionados.concat(valor);
+            setValor('tipos', novosTipos);
+        }
+    }
 
     return (
-        <>
+        <TiposDiv>
             <SelectionInput id="normal" texto="Normal"
-            funcao={(valor: boolean) => { setValue('normal', valor); }}/>
+            funcao={(valor: string) => { gerenciarTipos(valor); }}/>
 
-            <SelectionInput id="fogo" texto="Fogo"
-            funcao={(valor: boolean) => { setValue('fogo', valor); }}/>
+            <SelectionInput id="fighting" texto="Lutador"
+            funcao={(valor: string) => { gerenciarTipos(valor); }}/>
 
-            <SelectionInput id="agua" texto="Água"
-            funcao={(valor: boolean) => { setValue('agua', valor); }}/>
+            <SelectionInput id="flying" texto="Voador"
+            funcao={(valor: string) => { gerenciarTipos(valor); }}/>
 
-            <SelectionInput id="grama" texto="Grama"
-            funcao={(valor: boolean) => { setValue('grama', valor); }}/>
+            <SelectionInput id="poison" texto="Veneno"
+            funcao={(valor: string) => { gerenciarTipos(valor); }}/>
 
-            <SelectionInput id="voador" texto="Voador"
-            funcao={(valor: boolean) => { setValue('voador', valor); }}/>
+            <SelectionInput id="ground" texto="Terra"
+            funcao={(valor: string) => { gerenciarTipos(valor); }}/>
 
-            <SelectionInput id="lutador" texto="Lutador"
-            funcao={(valor: boolean) => { setValue('lutador', valor); }}/>
+            <SelectionInput id="rock" texto="Pedra"
+            funcao={(valor: string) => { gerenciarTipos(valor); }}/>
 
-            <SelectionInput id="veneno" texto="Veneno"
-            funcao={(valor: boolean) => { setValue('veneno', valor); }}/>
+            <SelectionInput id="bug" texto="Inseto"
+            funcao={(valor: string) => { gerenciarTipos(valor); }}/>
 
-            <SelectionInput id="eletrico" texto="Elétrico"
-            funcao={(valor: boolean) => { setValue('eletrico', valor); }}/>
+            <SelectionInput id="ghost" texto="Fantasma"
+            funcao={(valor: string) => { gerenciarTipos(valor); }}/>
 
-            <SelectionInput id="terra" texto="Terra"
-            funcao={(valor: boolean) => { setValue('terra', valor); }}/>
+            <SelectionInput id="steel" texto="Ferro"
+            funcao={(valor: string) => { gerenciarTipos(valor); }}/>
 
-            <SelectionInput id="pedra" texto="Pedra"
-            funcao={(valor: boolean) => { setValue('pedra', valor); }}/>
+            <SelectionInput id="fire" texto="Fogo"
+            funcao={(valor: string) => { gerenciarTipos(valor); }}/>
 
-            <SelectionInput id="psiquico" texto="Psíquico"
-            funcao={(valor: boolean) => { setValue('psiquico', valor); }}/>
+            <SelectionInput id="water" texto="Água"
+            funcao={(valor: string) => { gerenciarTipos(valor); }}/>
 
-            <SelectionInput id="gelo" texto="Gelo"
-            funcao={(valor: boolean) => { setValue('gelo', valor); }}/>
+            <SelectionInput id="grass" texto="Grama"
+            funcao={(valor: string) => { gerenciarTipos(valor); }}/>
 
-            <SelectionInput id="inseto" texto="Inseto"
-            funcao={(valor: boolean) => { setValue('inseto', valor); }}/>
+            <SelectionInput id="electric" texto="Elétrico"
+            funcao={(valor: string) => { gerenciarTipos(valor); }}/>
 
-            <SelectionInput id="fantasma" texto="Fantasma"
-            funcao={(valor: boolean) => { setValue('fantasma', valor); }}/>
+            <SelectionInput id="psychic" texto="Psíquico"
+            funcao={(valor: string) => { gerenciarTipos(valor); }}/>
 
-            <SelectionInput id="ferro" texto="Ferro"
-            funcao={(valor: boolean) => { setValue('ferro', valor); }}/>
+            <SelectionInput id="ice" texto="Gelo"
+            funcao={(valor: string) => { gerenciarTipos(valor); }}/>
 
-            <SelectionInput id="dragao" texto="Dragão"
-            funcao={(valor: boolean) => { setValue('dragao', valor); }}/>
+            <SelectionInput id="dragon" texto="Dragão"
+            funcao={(valor: string) => { gerenciarTipos(valor); }}/>
 
-            <SelectionInput id="sombrio" texto="Sombrio"
-            funcao={(valor: boolean) => { setValue('sombrio', valor); }}/>
+            <SelectionInput id="dark" texto="Sombrio"
+            funcao={(valor: string) => { gerenciarTipos(valor); }}/>
 
-            <SelectionInput id="fada" texto="Fada"
-            funcao={(valor: boolean) => { setValue('fada', valor); }}/>
-        </>
+            <SelectionInput id="fairy" texto="Fada"
+            funcao={(valor: string) => { gerenciarTipos(valor); }}/>
+        </TiposDiv>
+    );
+}
+
+function SelectionInput({ id, texto, funcao }: InputAtt) {
+
+    return (
+        <SelecButtonDiv>
+            <SelecInput type="checkbox" id={id} onClick={() => funcao(id)}/>
+            <SelecLabel htmlFor={id}>{texto}</SelecLabel>
+        </SelecButtonDiv>
     );
 }

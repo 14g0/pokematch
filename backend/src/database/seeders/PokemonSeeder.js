@@ -5,13 +5,15 @@ const seedPokemon = async() => {
 
     const pokemons = (await(await fetch('https://pokeapi.co/api/v2/pokemon/?limit=1292')).json()).results;
 
-    pokemons.forEach(async (pokemon, indice) => {
+    pokemons.forEach(async (pokemon) => {
+        const pokeid = pokemon.url.split('/')[6];
+
         PokemonArray.push({
-            id: indice,
+            pokedex: pokeid,
             nome: pokemon.name,
-            foto: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${indice + 1}.png`
-        })
-    })
+            foto: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokeid}.png`
+        });
+    });
 
     try {
         await Pokemon.sync({ force: true });

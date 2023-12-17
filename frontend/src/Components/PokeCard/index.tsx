@@ -1,4 +1,4 @@
-import { CardImg, PokeCardDiv, PokeName, TipoIcon, TiposDiv } from "./style";
+import { CardImg, PokeCardDiv, PokeName, TipoIcon, TiposCardDiv } from "./style";
 
 import agua from '../../Assets/Tipos/tipoAgua.png';
 import fogo from '../../Assets/Tipos/tipoFogo.png';
@@ -25,38 +25,36 @@ type Pokemon = {
     foto: string;
 };
 
-export default function PokeCard(
-    {tipos, nome, foto}: Pokemon
-) {
+export default function PokeCard({tipos, nome, foto}: Pokemon) {
     return (
         <PokeCardDiv>
             <CardImg src={foto}/>
             <PokeName>{nome}</PokeName>
-            <TiposDiv>
-                {tipos.map((tipo) => {
+            <TiposCardDiv>
+                {tipos.map((tipo, indice) => {
                     switch(tipo) {
-                        case 'normal': return <TipoIcon src={normal}/>
-                        case 'fighting': return <TipoIcon src={lutador}/>
-                        case 'flying': return <TipoIcon src={voador}/>
-                        case 'poison': return <TipoIcon src={veneno}/>
-                        case 'ground': return <TipoIcon src={terra}/>
-                        case 'rock': return <TipoIcon src={pedra}/>
-                        case 'bug': return <TipoIcon src={inseto}/>
-                        case 'ghost': return <TipoIcon src={fantasma}/>
-                        case 'steel': return <TipoIcon src={ferro}/>
-                        case 'fire': return <TipoIcon src={fogo}/>
-                        case 'water': return <TipoIcon src={agua}/>
-                        case 'grass': return <TipoIcon src={grama}/>
-                        case 'electric': return <TipoIcon src={eletrico}/>
-                        case 'psychic': return <TipoIcon src={psiquico}/>
-                        case 'ice': return <TipoIcon src={gelo}/>
-                        case 'dragon': return <TipoIcon src={dragao}/>
-                        case 'dark': return <TipoIcon src={sombrio}/>
-                        case 'fairy': return <TipoIcon src={fada}/>
-                        default: return <TipoIcon/>
+                        case 'normal': return <TipoIcon key={indice} src={normal}/>
+                        case 'fighting': return <TipoIcon key={indice} src={lutador}/>
+                        case 'flying': return <TipoIcon key={indice} src={voador}/>
+                        case 'poison': return <TipoIcon key={indice} src={veneno}/>
+                        case 'ground': return <TipoIcon key={indice} src={terra}/>
+                        case 'rock': return <TipoIcon key={indice} src={pedra}/>
+                        case 'bug': return <TipoIcon key={indice} src={inseto}/>
+                        case 'ghost': return <TipoIcon key={indice} src={fantasma}/>
+                        case 'steel': return <TipoIcon key={indice} src={ferro}/>
+                        case 'fire': return <TipoIcon key={indice} src={fogo}/>
+                        case 'water': return <TipoIcon key={indice} src={agua}/>
+                        case 'grass': return <TipoIcon key={indice} src={grama}/>
+                        case 'electric': return <TipoIcon key={indice} src={eletrico}/>
+                        case 'psychic': return <TipoIcon key={indice} src={psiquico}/>
+                        case 'ice': return <TipoIcon key={indice} src={gelo}/>
+                        case 'dragon': return <TipoIcon key={indice} src={dragao}/>
+                        case 'dark': return <TipoIcon key={indice} src={sombrio}/>
+                        case 'fairy': return <TipoIcon key={indice} src={fada}/>
+                        default: return <TipoIcon key={indice}/>
                     }
                 })}
-            </TiposDiv>
+            </TiposCardDiv>
         </PokeCardDiv>
     );
 }

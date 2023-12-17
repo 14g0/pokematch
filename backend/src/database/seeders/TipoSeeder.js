@@ -7,9 +7,9 @@ const seedTipo = async() => {
 
     tipos.forEach((tipo, indice) => {
         TipoArray.push({
-            id: indice,
+            id: indice + 1,
             nome: tipo.name
-        })
+        });
     });
     
     try {

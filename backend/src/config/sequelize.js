@@ -19,10 +19,11 @@ const sequelize = (process.env.DB_CONNECTION === 'sqlite') ?
 
 module.exports = sequelize;
 
-require('../models/Pokemon');
-require('../models/Tipo');
 require('../models/Caracteristicas');
+require('../models/Pokemon');
+require('../models/Possui');
 require('../models/Skill');
+require('../models/Tipo');
 
 for (mod in sequelize.models) {
   if (sequelize.models[mod].associate instanceof Function) {

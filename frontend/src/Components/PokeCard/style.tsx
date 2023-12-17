@@ -27,7 +27,7 @@ export const PokeName = styled.h3 `
     text-align: center;
 `;
 
-export const TiposDiv = styled.div `
+export const TiposCardDiv = styled.div `
     display: inline-flex;
     width: 50%;
     justify-content: space-evenly;
@@ -36,5 +36,5 @@ export const TiposDiv = styled.div `
 `;
 
 export const TipoIcon = styled.img `
-    width: 50%;
+    width: 40%;
 `;

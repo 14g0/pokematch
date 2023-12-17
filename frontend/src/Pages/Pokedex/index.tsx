@@ -1,79 +1,103 @@
 import { useForm } from 'react-hook-form';
-import { CardsDiv, PokeNav, PokedexDiv, SelectionDiv, SelectionOptions, SelectionTitle } from "./style";
+
+import { CardsDiv, ConsultasDiv, FecharConsulta, PokeNav, PokedexDiv, SelecaoConsulta, SelectionDiv,
+    SelectionTitle, SubmitButton, TiposConsulta } from "./style";
 import Tipos from '../../Components/Tipos';
 import PokeCard from '../../Components/PokeCard';
 
-type tiposForm = {
-    normal: boolean; fogo: boolean;
-    agua: boolean; grama: boolean;
-    voador: boolean; lutador: boolean;
-    veneno: boolean; eletrico: boolean;
-    terra: boolean; pedra: boolean;
-    psiquico: boolean; gelo: boolean;
-    inseto: boolean; fantasma: boolean;
-    ferro: boolean; dragao: boolean;
-    sombrio: boolean; fada: boolean;
-}
+import Seta from '../../Assets/Pokedex/setinha.svg';
 
-type iago = {
-    abacate: string;
-}
-
-type Consulta = {
-    consulta: number;
-    
-    formulario: tiposForm | iago
-}
+type PokeForm = {
+    formTipo: number;
+    tipos: Array<string>;
+};
 
 export default function Pokedex() {
 
-    useForm<Consulta>({
+    const { handleSubmit, setValue, getValues } = useForm<PokeForm>({
         defaultValues:{
-            formulario: {
-                normal: false, fogo: false,
-                agua: false, grama: false,
-                voador: false, lutador: false,
-                veneno: false, eletrico: false,
-                terra: false, pedra: false,
-                psiquico: false, gelo: false,
-                inseto: false, fantasma: false,
-                ferro: false, dragao: false,
-                sombrio: false, fada: false,
+            formTipo: 0,
+            tipos: []
+        }
+    });
+
+    let aberto = true;
+    const abrirMenu = () => {
+        const seta = document.getElementById('fecharConsulta');
+        const pokenav = document.getElementById('pokenav');
+
+        if(seta && pokenav) {
+            if(aberto) {
+                seta.style.transform = 'rotate(0deg)';
+                pokenav.style.transform = 'translateY(-85%)';
+                aberto = false;
             }
-    }});
+            else {
+                seta.style.transform = 'rotate(180deg)';
+                pokenav.style.transform = 'translateY(0)';
+                aberto = true;
+            }
+        }
+    };
 
     return (
         <PokedexDiv>
-            <PokeNav>
-                <SelectionDiv>
-                    <SelectionTitle>Tipos</SelectionTitle>
-                    <SelectionOptions>
-                        <Tipos/>
-                    </SelectionOptions>
-                </SelectionDiv>
+            <PokeNav id='pokenav' onSubmit={handleSubmit(async dados => {
+                const formDados = JSON.stringify(dados);
+                console.log(formDados);
+                await fetch('http://localhost:3333/pokeform', {
+                    method: 'post',
+                    body: formDados,
+                    mode: 'cors',
+                    headers: new Headers({
+                    'Content-Type': 'application/json'
+                    })
+                });
+            })}>
+                <SelecaoConsulta>
+                    <SelectionDiv>
+                        <SelectionTitle>Tipos</SelectionTitle>
+                        <Tipos getValor={getValues} setValor={setValue}/>
+                    </SelectionDiv>
+                    <ConsultasDiv>
+                        <TiposConsulta>
+                        </TiposConsulta>
+                        <SubmitButton type='submit'>Filtrar</SubmitButton>
+                    </ConsultasDiv>
+                </SelecaoConsulta>
 
-                
+                <div onClick={abrirMenu} style={{display: 'flex', width: '100%', justifyContent: 'center'}}>
+                    <FecharConsulta id='fecharConsulta' src={Seta}/>
+                </div>
             </PokeNav>
 
             <CardsDiv>
-                <PokeCard nome='Blastoise' tipos={['agua', 'grass']} foto=''/>
-                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
-                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
-                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
-                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
-                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
-                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
-                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
-                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
-                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
-                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
-                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
-                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
-                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
-                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
-                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
-                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
-                <PokeCard nome='Blastoise' tipos={['agua']} foto=''/>
+                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
+                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
+                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
+                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
+                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
+                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
+                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
+                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
+                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
+                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
+                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
+                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
+                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
+                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
+                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
+                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
+                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
+                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
+                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
+                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
+                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
+                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
+                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
+                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
+                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
+                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
             </CardsDiv>
         </PokedexDiv>
     );
