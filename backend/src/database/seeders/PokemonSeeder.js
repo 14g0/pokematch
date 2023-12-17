@@ -10,7 +10,7 @@ const seedPokemon = async() => {
 
         PokemonArray.push({
             pokedex: pokeid,
-            nome: pokemon.name,
+            nome: pokemon.name[0].toUpperCase() + pokemon.name.slice(1),
             foto: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokeid}.png`
         });
     });

@@ -44,6 +44,8 @@ export const SelecaoConsulta = styled.div `
     display: inline-flex;
     width: 100%;
     height: 85%;
+
+    justify-content: space-evenly;
 `;
 
 export const SelectionDiv = styled.div `
@@ -67,36 +69,6 @@ export const FecharConsulta = styled.img `
 
 /*----------------------------------------------------------------------------*/
 
-export const ConsultasDiv = styled.div `
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-    height: 100%;
-
-    align-items: center;
-    justify-content: space-between;
-`;
-
-export const TiposConsulta = styled.div `
-
-`;
-
-export const SubmitButton = styled.button `
-    width: 20%;
-    height: 20%;
-
-    font-family: ${global.fonts.quantico};
-    font-size: 1.7vw;
-    font-weight: 500;
-
-    border-radius: 0.5vw;
-
-    color: white;
-    background-color: ${global.cores.azul};
-`;
-
-/*----------------------------------------------------------------------------*/
-
 export const CardsDiv = styled.div `
     display: grid;
     grid-template-columns: 0.18fr 0.18fr 0.18fr 0.18fr 0.18fr;
@@ -113,3 +85,4 @@ export const CardsDiv = styled.div `
     padding: 2% 0 2% 0;
     background-color: black;
 `;
+

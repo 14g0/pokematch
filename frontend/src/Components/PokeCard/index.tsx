@@ -1,4 +1,4 @@
-import { CardImg, PokeCardDiv, PokeName, TipoIcon, TiposCardDiv } from "./style";
+import { CardImg, PokeCardDiv, PokeCardId, PokeName, TipoIcon, TiposCardDiv } from "./style";
 
 import agua from '../../Assets/Tipos/tipoAgua.png';
 import fogo from '../../Assets/Tipos/tipoFogo.png';
@@ -19,17 +19,20 @@ import psiquico from '../../Assets/Tipos/tipoPsiquico.png';
 import veneno from '../../Assets/Tipos/tipoVeneno.png';
 import voador from '../../Assets/Tipos/tipoVoador.png';
 
-type Pokemon = {
+export type Pokemon = {
+    id: number;
     tipos: Array<string>;
     nome: string;
     foto: string;
 };
 
-export default function PokeCard({tipos, nome, foto}: Pokemon) {
+export default function PokeCard({id, tipos, nome, foto}: Pokemon) {
     return (
         <PokeCardDiv>
+            <PokeCardId># {String(id).padStart(3, '0')}</PokeCardId>
             <CardImg src={foto}/>
-            <PokeName>{nome}</PokeName>
+            <PokeName style={{fontSize: `${nome.length > 16? 16 : 20}px`}}
+            >{nome}</PokeName>
             <TiposCardDiv>
                 {tipos.map((tipo, indice) => {
                     switch(tipo) {

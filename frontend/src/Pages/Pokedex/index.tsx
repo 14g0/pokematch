@@ -1,28 +1,47 @@
 import { useForm } from 'react-hook-form';
+import { useEffect, useState } from 'react';
+import { consultar } from '../../Functions/consultas';
+import { Pokemon } from '../../Components/PokeCard';
 
-import { CardsDiv, ConsultasDiv, FecharConsulta, PokeNav, PokedexDiv, SelecaoConsulta, SelectionDiv,
-    SelectionTitle, SubmitButton, TiposConsulta } from "./style";
+import { CardsDiv, FecharConsulta, PokeNav, PokedexDiv, SelecaoConsulta } from "./style";
 import Tipos from '../../Components/Tipos';
 import PokeCard from '../../Components/PokeCard';
 
 import Seta from '../../Assets/Pokedex/setinha.svg';
+import Filtro from '../../Components/Filtro';
 
-type PokeForm = {
-    formTipo: number;
-    tipos: Array<string>;
+export type PokeForm = {
+    consulta: number;
+    formTipos: Array<string>;
 };
 
 export default function Pokedex() {
+    const [resposta, setResposta] = useState<Array<Pokemon>>([]);
+    const [consultaSelec, setConsulta] = useState<number>(0);
 
     const { handleSubmit, setValue, getValues } = useForm<PokeForm>({
         defaultValues:{
-            formTipo: 0,
-            tipos: []
+            consulta: 0,
+            formTipos: []
         }
     });
 
+    const switchConsulta = (valor: number) => {
+        setConsulta(valor);
+        setValue('consulta', valor);
+    }
+
+    useEffect(() => {
+        async function consultaInicial(){    
+            const retorno = await consultar(getValues());
+            if(retorno) setResposta(retorno);
+        }
+        consultaInicial();
+    }, []);
+
+
     let aberto = true;
-    const abrirMenu = () => {
+    const Menu = () => {
         const seta = document.getElementById('fecharConsulta');
         const pokenav = document.getElementById('pokenav');
 
@@ -43,61 +62,33 @@ export default function Pokedex() {
     return (
         <PokedexDiv>
             <PokeNav id='pokenav' onSubmit={handleSubmit(async dados => {
-                const formDados = JSON.stringify(dados);
-                console.log(formDados);
-                await fetch('http://localhost:3333/pokeform', {
-                    method: 'post',
-                    body: formDados,
-                    mode: 'cors',
-                    headers: new Headers({
-                    'Content-Type': 'application/json'
-                    })
-                });
+                console.log(dados);
+                const retorno = await consultar(dados);
+                if(retorno) {
+                    console.log(retorno);
+                    setResposta(retorno);
+                    Menu();
+                }
             })}>
                 <SelecaoConsulta>
-                    <SelectionDiv>
-                        <SelectionTitle>Tipos</SelectionTitle>
-                        <Tipos getValor={getValues} setValor={setValue}/>
-                    </SelectionDiv>
-                    <ConsultasDiv>
-                        <TiposConsulta>
-                        </TiposConsulta>
-                        <SubmitButton type='submit'>Filtrar</SubmitButton>
-                    </ConsultasDiv>
+                    <Tipos getValor={getValues} setValor={setValue}
+                    display={consultaSelec}/>
+
+                    <Filtro getValor={getValues} setValor={switchConsulta}/>
                 </SelecaoConsulta>
 
-                <div onClick={abrirMenu} style={{display: 'flex', width: '100%', justifyContent: 'center'}}>
+                <div onClick={Menu} style={{display: 'flex', width: '100%', justifyContent: 'center'}}>
                     <FecharConsulta id='fecharConsulta' src={Seta}/>
                 </div>
             </PokeNav>
 
             <CardsDiv>
-                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
-                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
-                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
-                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
-                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
-                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
-                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
-                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
-                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
-                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
-                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
-                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
-                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
-                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
-                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
-                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
-                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
-                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
-                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
-                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
-                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
-                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
-                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
-                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
-                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
-                <PokeCard nome='Blastoise' tipos={['water', 'grass']} foto='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png'/>
+                {
+                    resposta.map((poke: Pokemon, indice: number) => {
+                        return <PokeCard id={poke.id} nome={poke.nome}
+                        foto={poke.foto} tipos={poke.tipos} key={indice}/>;
+                    })
+                }
             </CardsDiv>
         </PokedexDiv>
     );

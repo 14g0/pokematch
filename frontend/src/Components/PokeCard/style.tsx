@@ -5,23 +5,31 @@ export const PokeCardDiv = styled.div `
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: fit-content;
+    height: 100%;
 
     align-items: center;
 
     border: solid 2px white;
     border-radius: 10px;
-    background-color: #9c9c9c;
+    background-color: #8c8c8c;
+`;
+
+export const PokeCardId = styled.p `
+    margin: 3vh 0;
+    font-family: ${global.fonts.quantico};
+    font-size: 1.5vw;
+    font-weight: 700;
+    color: white;
 `;
 
 export const CardImg = styled.img `
-    width: 90%;
+    min-height: 25vh;
+    max-height: 30vh;
 `;
 
 export const PokeName = styled.h3 `
     width: 100%;
     font-family: ${global.fonts.quantico};
-    font-size: 20px;
     font-weight: 600;
     color: white;
     text-align: center;
@@ -29,12 +37,12 @@ export const PokeName = styled.h3 `
 
 export const TiposCardDiv = styled.div `
     display: inline-flex;
-    width: 50%;
+    width: 60%;
     justify-content: space-evenly;
     align-items: center;
     margin: 5% 0;
 `;
 
 export const TipoIcon = styled.img `
-    width: 40%;
+    width: 30%;
 `;
