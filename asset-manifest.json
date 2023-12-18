@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "./static/css/main.e85b3eb0.css",
+    "main.js": "./static/js/main.c8217157.js",
+    "static/js/787.8f9cceaa.chunk.js": "./static/js/787.8f9cceaa.chunk.js",
+    "static/media/lato-latin-400-normal.woff2": "./static/media/lato-latin-400-normal.be36596da218e1eec01c.woff2",
+    "static/media/lato-latin-400-normal.woff": "./static/media/lato-latin-400-normal.bed82ec070137691d9a0.woff",
+    "static/media/quantico-latin-400-normal.woff": "./static/media/quantico-latin-400-normal.56f552568c75ec5b98d8.woff",
+    "static/media/lato-latin-ext-400-normal.woff2": "./static/media/lato-latin-ext-400-normal.361f3dbb9db6a5980326.woff2",
+    "static/media/quantico-latin-400-normal.woff2": "./static/media/quantico-latin-400-normal.38b8d2a5e3e89e5fcc61.woff2",
+    "static/media/lato-latin-ext-400-normal.woff": "./static/media/lato-latin-ext-400-normal.c62d8b2772865c9ac5ba.woff",
+    "index.html": "./index.html",
+    "static/media/setinha.svg": "./static/media/setinha.b10ec01627d9ec15e3435be878da5f84.svg",
+    "main.e85b3eb0.css.map": "./static/css/main.e85b3eb0.css.map",
+    "main.c8217157.js.map": "./static/js/main.c8217157.js.map",
+    "787.8f9cceaa.chunk.js.map": "./static/js/787.8f9cceaa.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e85b3eb0.css",
+    "static/js/main.c8217157.js"
+  ]
+}
