@@ -5,7 +5,7 @@ export const consultar = async(formulario: PokeForm) => {
     botaoFiltrar?.toggleAttribute('disabled', true);
     botaoFiltrar?.classList.add('envioDesativado');
 
-    const retorno = await fetch('http://localhost:3333/pokeform', {
+    const retorno = await fetch('https://pokematch.onrender.com/pokeform', {
         method: 'post',
         body: JSON.stringify(formulario),
         mode: 'cors',
